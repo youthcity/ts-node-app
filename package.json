@@ -4,8 +4,14 @@
   "description": "node app with typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server.ts"
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint",
+    "serve": "node dist/server.js",
+    "watch-server": "nodemon --inspect --watch 'src/**/*' --exec 'node -r ts-node/register' ./src/server.ts",
+    "build-ts": "tsc --noEmitOnError --baseUrl src",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\"  \"npm run watch-ts \"  \"nodemon --inspect dist/server.js\""
   },
   "keywords": [
     "node",
@@ -15,13 +21,17 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.5.1",
+    "koa-body": "^2.5.0",
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
     "@types/koa": "^2.0.45",
     "@types/koa-router": "^7.0.28",
+    "@types/node": "^8.10.10",
+    "concurrently": "^3.5.1",
     "nodemon": "^1.17.3",
     "ts-node": "^6.0.2",
+    "tslint": "^5.9.1",
     "typescript": "^2.8.3"
   }
 }
