@@ -2,6 +2,16 @@
 
 ## Usage
 
+### Install 
+
+```bash
+yarn install
+
+// or
+
+npm install
+```
+
 ### Production
 
 ```bash
@@ -26,10 +36,12 @@ npm run watch-server
 ## TODO
 
 - [] 提交代码时，检测tslint.
-- [] 使用chrome debug
-- [] 使用 vscode debug
+- [x] 使用chrome debug
+- [] Using the debugger in VS Code
 - [] 配置项外置
 - [] 全局异常处理
+- [] docker 化
+- [] 完善项目基本结构
 
 ## Koa 标准中间件
 
